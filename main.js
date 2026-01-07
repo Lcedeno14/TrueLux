@@ -107,30 +107,59 @@ document.addEventListener('DOMContentLoaded', () => {
 // Form handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message (in a real app, you'd handle this properly)
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
-        submitButton.textContent = 'Message Sent!';
-        submitButton.style.background = '#10b981';
         
-        // Reset form
-        contactForm.reset();
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
         
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitButton.textContent = originalText;
-            submitButton.style.background = '';
-        }, 3000);
+        try {
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Send to API
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Success
+                submitButton.textContent = 'Message Sent!';
+                submitButton.style.background = '#10b981';
+                contactForm.reset();
+                
+                // Show success message
+                setTimeout(() => {
+                    submitButton.textContent = originalText;
+                    submitButton.style.background = '';
+                    submitButton.disabled = false;
+                }, 3000);
+            } else {
+                // Error
+                throw new Error(result.error || 'Failed to send message');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            submitButton.textContent = 'Error - Try Again';
+            submitButton.style.background = '#ef4444';
+            
+            setTimeout(() => {
+                submitButton.textContent = originalText;
+                submitButton.style.background = '';
+                submitButton.disabled = false;
+            }, 3000);
+        }
     });
 }
 

@@ -125,6 +125,30 @@ The `vercel.json` file is already configured with:
 - Framework: `vite`
 - Proper routing for SPA
 
+### Setting Up Email (Contact Form)
+
+The contact form uses Resend to send emails. Follow these steps:
+
+1. **Sign up for Resend** (free tier available):
+   - Go to [resend.com](https://resend.com) and create an account
+   - Verify your domain (trueluxconstruction.com) or use their test domain
+   - Get your API key from the dashboard
+
+2. **Add Environment Variables in Vercel**:
+   - Go to your Vercel project dashboard
+   - Navigate to Settings → Environment Variables
+   - Add the following variables:
+     - `RESEND_API_KEY`: Your Resend API key
+     - `CONTACT_EMAIL`: jordan@trueluxconstruction.com (or your preferred email)
+     - `EMAIL_SERVICE`: resend
+
+3. **Redeploy**: After adding environment variables, redeploy your site
+
+**Alternative: Using Gmail SMTP** (if you prefer not to use Resend):
+- You can modify the API route to use Nodemailer with Gmail SMTP
+- Requires setting up an App Password in your Google Account
+- See the API route code for implementation details
+
 ### Manual Deployment
 
 If you prefer to deploy manually:
