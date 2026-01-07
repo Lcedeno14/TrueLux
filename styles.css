@@ -67,7 +67,7 @@ body {
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
@@ -334,7 +334,7 @@ body {
     cursor: pointer;
     position: relative;
     background: var(--bg-secondary);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .visual-item::before {
@@ -346,7 +346,7 @@ body {
     bottom: 0;
     background: linear-gradient(135deg, rgba(248, 218, 105, 0.1) 0%, rgba(212, 181, 71, 0.05) 100%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: 1;
     pointer-events: none;
 }
@@ -366,8 +366,8 @@ body {
     object-fit: cover;
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out forwards;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    animation: fadeInUp 0.4s ease-out forwards;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease;
     will-change: transform;
 }
 
@@ -414,7 +414,7 @@ body {
     text-align: center;
     cursor: pointer;
     position: relative;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-preview-item:hover {
@@ -430,7 +430,7 @@ body {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out forwards;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, filter 0.4s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease, filter 0.2s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     will-change: transform;
 }
@@ -616,7 +616,7 @@ body {
 
 .title-line {
     opacity: 0;
-    animation: fadeInUp 1s ease-out forwards;
+    animation: fadeInUp 0.5s ease-out forwards;
 }
 
 .title-line:nth-child(1) { animation-delay: 0.2s; }
@@ -648,7 +648,7 @@ body {
     margin: 0 auto 2.5rem;
     opacity: 0.95;
     font-weight: 300;
-    animation: fadeInUp 1s ease-out 0.8s both;
+    animation: fadeInUp 0.5s ease-out 0.3s both;
 }
 
 .hero-buttons {
@@ -656,7 +656,7 @@ body {
     gap: 1.5rem;
     justify-content: center;
     margin-bottom: 4rem;
-    animation: fadeInUp 1s ease-out 1s both;
+    animation: fadeInUp 0.5s ease-out 0.4s both;
     flex-wrap: wrap;
 }
 
@@ -668,7 +668,7 @@ body {
     border-radius: var(--radius-md);
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
     position: relative;
     overflow: hidden;
@@ -685,7 +685,7 @@ body {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    transition: width 0.3s ease, height 0.3s ease;
 }
 
 .btn:hover::before {
@@ -732,7 +732,7 @@ body {
     gap: 4rem;
     justify-content: center;
     flex-wrap: wrap;
-    animation: fadeInUp 1s ease-out 1.2s both;
+    animation: fadeInUp 0.5s ease-out 0.5s both;
 }
 
 .stat-item {
@@ -863,7 +863,7 @@ body {
     position: relative;
     cursor: pointer;
     background: var(--bg-secondary);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
 }
 
 .service-image-wrapper::before {
@@ -875,7 +875,7 @@ body {
     bottom: 0;
     background: linear-gradient(135deg, rgba(248, 218, 105, 0.1) 0%, rgba(212, 181, 71, 0.05) 100%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: 1;
     pointer-events: none;
 }
@@ -893,7 +893,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease;
     will-change: transform;
 }
 
@@ -1027,7 +1027,7 @@ body {
 
 .work-item {
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-item:hover {
@@ -1050,7 +1050,7 @@ body {
     position: relative;
     background: var(--bg-secondary);
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s ease;
 }
 
 .work-image-wrapper::before {
@@ -1062,7 +1062,7 @@ body {
     bottom: 0;
     background: linear-gradient(135deg, rgba(248, 218, 105, 0.15) 0%, rgba(212, 181, 71, 0.08) 100%);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.2s ease;
     z-index: 1;
     pointer-events: none;
 }
@@ -1080,7 +1080,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease;
     will-change: transform;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
