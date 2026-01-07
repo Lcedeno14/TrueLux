@@ -1,5 +1,15 @@
 // Vercel Serverless Function for Contact Form
 export default async function handler(req, res) {
+  // Set CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Handle preflight
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -35,7 +45,7 @@ export default async function handler(req, res) {
           'Authorization': `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: 'True Lux Construction <noreply@trueluxconstruction.com>',
+          from: process.env.FROM_EMAIL || 'True Lux Construction <onboarding@resend.dev>',
           to: [recipientEmail],
           replyTo: email,
           subject: `New Consultation Request from ${name}`,
