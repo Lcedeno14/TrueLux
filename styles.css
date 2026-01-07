@@ -85,6 +85,7 @@ body {
 .logo-link {
     display: flex;
     align-items: center;
+    gap: 1rem;
     text-decoration: none;
 }
 
@@ -97,6 +98,19 @@ body {
 
 .logo-img:hover {
     transform: scale(1.05);
+}
+
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+    transition: var(--transition);
+}
+
+.logo-link:hover .logo-text {
+    color: var(--primary);
 }
 
 .footer-logo-img {
@@ -161,11 +175,88 @@ body {
 
 /* Home Section */
 .home {
+    position: relative;
     padding: 8rem 0 6rem;
     background: var(--bg-primary);
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home-gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #f8da69 0%, #d4b547 40%, #8b6914 80%, #6b5010 100%);
+    opacity: 0.15;
+}
+
+.home-animated-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.home-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
+    animation: float 25s infinite ease-in-out;
+}
+
+.home-shape-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--primary);
+    top: -300px;
+    left: -300px;
+    animation-delay: 0s;
+}
+
+.home-shape-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--accent);
+    bottom: -250px;
+    right: -250px;
+    animation-delay: 8s;
+}
+
+.home-shape-3 {
+    width: 450px;
+    height: 450px;
+    background: var(--secondary);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 15s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(60px, -60px) scale(1.15); }
+    66% { transform: translate(-60px, 60px) scale(0.85); }
 }
 
 .home-intro {
+    position: relative;
+    z-index: 1;
     text-align: center;
     margin-bottom: 4rem;
     padding: 2rem 0;
@@ -196,6 +287,8 @@ body {
 
 .home-overview,
 .home-scope {
+    position: relative;
+    z-index: 1;
     max-width: 800px;
     margin: 0 auto 4rem;
     text-align: center;
@@ -209,6 +302,8 @@ body {
 }
 
 .home-visual {
+    position: relative;
+    z-index: 1;
     margin: 4rem 0;
 }
 
@@ -238,10 +333,12 @@ body {
 }
 
 .home-work {
+    position: relative;
+    z-index: 1;
     margin: 6rem 0;
     padding: 4rem 0;
-    border-top: 1px solid #e2e8f0;
-    border-bottom: 1px solid #e2e8f0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .work-section-title {
@@ -280,6 +377,8 @@ body {
 }
 
 .home-process {
+    position: relative;
+    z-index: 1;
     margin: 4rem 0;
     text-align: center;
 }
@@ -323,6 +422,8 @@ body {
 }
 
 .home-invitation {
+    position: relative;
+    z-index: 1;
     text-align: center;
     margin-top: 4rem;
     padding: 2rem 0;
@@ -1446,6 +1547,10 @@ body {
 
     .logo-img {
         height: 40px;
+    }
+
+    .logo-text {
+        font-size: 1rem;
     }
 
     .footer-logo-img {
