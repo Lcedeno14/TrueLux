@@ -219,7 +219,6 @@ const projectGalleries = {
     project1: {
         title: 'Residential Renovation',
         images: [
-            '/projects/IMG_4878.jpeg',
             '/projects/IMG_4879.jpeg',
             '/projects/IMG_4880.jpeg'
         ]
@@ -228,9 +227,18 @@ const projectGalleries = {
         title: 'Exterior Improvements & Repairs',
         images: [
             '/projects/155480591355505790.JPG',
+            '/projects/2477218595194736636.JPG',
             '/projects/4098440594837260042.JPG',
             '/projects/4703747222349663462.JPG',
             '/projects/5560434333821835102.JPG'
+        ]
+    },
+    project3: {
+        title: 'Residential Project 3',
+        images: [
+            '/projects/IMG_4958.jpeg',
+            '/projects/IMG_4961.jpeg',
+            '/projects/IMG_4963.jpeg'
         ]
     }
 };
