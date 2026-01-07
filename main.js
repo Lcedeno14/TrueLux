@@ -234,7 +234,7 @@ const projectGalleries = {
         ]
     },
     project3: {
-        title: 'Residential Project 3',
+        title: 'Residential Construction',
         images: [
             '/projects/IMG_4958.jpeg',
             '/projects/IMG_4961.jpeg',
