@@ -93,7 +93,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.service-card, .project-card, .testimonial-card, .about-text, .contact-info, .hero-stats'
+        '.service-section, .work-item, .about-text, .contact-info, .process-step'
     );
     
     animateElements.forEach(el => {
