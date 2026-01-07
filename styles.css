@@ -63,17 +63,18 @@ body {
     right: 0;
     z-index: 1000;
     padding: 1.5rem 0;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar.scrolled {
     padding: 1rem 0;
-    box-shadow: var(--shadow-md);
-    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .nav-container {
@@ -329,7 +330,34 @@ body {
 .visual-item {
     aspect-ratio: 16/10;
     overflow: hidden;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    position: relative;
+    background: var(--bg-secondary);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.visual-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(248, 218, 105, 0.1) 0%, rgba(212, 181, 71, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.visual-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.visual-item:hover::before {
+    opacity: 1;
 }
 
 .visual-image {
@@ -339,7 +367,8 @@ body {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out forwards;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    will-change: transform;
 }
 
 .visual-item:nth-child(1) .visual-image {
@@ -351,8 +380,8 @@ body {
 }
 
 .visual-item:hover .visual-image {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
+    transform: scale(1.08);
+    filter: brightness(1.05);
 }
 
 .home-work {
@@ -383,18 +412,27 @@ body {
 
 .work-preview-item {
     text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.work-preview-item:hover {
+    transform: translateY(-8px);
 }
 
 .work-preview-image {
     width: 100%;
     aspect-ratio: 4/3;
     object-fit: cover;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     margin-bottom: 1rem;
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease-out forwards;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, filter 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    will-change: transform;
 }
 
 .work-preview-item:nth-child(1) .work-preview-image {
@@ -406,8 +444,17 @@ body {
 }
 
 .work-preview-item:hover .work-preview-image {
-    transform: scale(1.05);
-    box-shadow: var(--shadow-lg);
+    transform: scale(1.06);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+}
+
+.work-preview-caption {
+    transition: color 0.3s ease;
+}
+
+.work-preview-item:hover .work-preview-caption {
+    color: var(--primary);
 }
 
 .work-preview-caption {
@@ -614,28 +661,54 @@ body {
 }
 
 .btn {
-    padding: 1rem 2.5rem;
+    padding: 1.125rem 2.75rem;
     font-size: 1rem;
     font-weight: 600;
     border: none;
     border-radius: var(--radius-md);
     text-decoration: none;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-block;
     position: relative;
     overflow: hidden;
+    letter-spacing: 0.02em;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-primary {
-    background: white;
-    color: var(--primary);
-    box-shadow: var(--shadow-lg);
+    background: var(--bg-gradient);
+    color: white;
+    box-shadow: 0 8px 24px rgba(248, 218, 105, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(248, 218, 105, 0.4);
+    background: linear-gradient(135deg, #fae68a 0%, #f5a623 100%);
+}
+
+.btn-primary:active {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
 }
 
 .btn-secondary {
@@ -643,12 +716,15 @@ body {
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
 }
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
 }
 
 .hero-stats {
@@ -783,18 +859,47 @@ body {
 .service-image-wrapper {
     aspect-ratio: 16/10;
     overflow: hidden;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
+    position: relative;
+    cursor: pointer;
+    background: var(--bg-secondary);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.service-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(248, 218, 105, 0.1) 0%, rgba(212, 181, 71, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.service-section:hover .service-image-wrapper {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.service-section:hover .service-image-wrapper::before {
+    opacity: 1;
 }
 
 .service-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    will-change: transform;
 }
 
 .service-section:hover .service-image {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    filter: brightness(1.05);
 }
 
 .service-content {
@@ -922,29 +1027,67 @@ body {
 
 .work-item {
     cursor: pointer;
-    transition: var(--transition);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .work-item:hover {
-    transform: translateY(-4px);
+    transform: translateY(-8px);
+}
+
+.work-title {
+    transition: color 0.3s ease;
+}
+
+.work-item:hover .work-title {
+    color: var(--primary);
 }
 
 .work-image-wrapper {
     aspect-ratio: 16/10;
     overflow: hidden;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     margin-bottom: 1.5rem;
+    position: relative;
+    background: var(--bg-secondary);
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
+}
+
+.work-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(248, 218, 105, 0.15) 0%, rgba(212, 181, 71, 0.08) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.work-item:hover .work-image-wrapper {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.work-item:hover .work-image-wrapper::before {
+    opacity: 1;
 }
 
 .work-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: var(--transition);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    will-change: transform;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .work-item:hover .work-image {
-    transform: scale(1.05);
+    transform: scale(1.08);
+    filter: brightness(1.05);
 }
 
 .work-title {
