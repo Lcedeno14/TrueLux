@@ -1,4 +1,4 @@
-// Modern 2026 Landing Page JavaScript
+// True Lux Construction - Modern JavaScript
 
 // Navigation
 const navbar = document.getElementById('navbar');
@@ -7,7 +7,6 @@ const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
 // Navbar scroll effect
-let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
@@ -16,21 +15,21 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
-    
-    lastScroll = currentScroll;
 });
 
 // Mobile menu toggle
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navToggle.classList.toggle('active');
+    });
+}
 
 // Close mobile menu when clicking nav links
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
+        if (navToggle) navToggle.classList.remove('active');
     });
 });
 
@@ -49,24 +48,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animated counter for stats
-const animateCounter = (element, target, duration = 2000) => {
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = start;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target + (target === 98 ? '%' : '+');
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
-        }
-    }, 16);
-};
-
-// Intersection Observer for animations
+// Intersection Observer for subtle animations
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -77,28 +59,19 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
-            
-            // Animate stats if it's the stats section
-            if (entry.target.classList.contains('hero-stats')) {
-                const statNumbers = entry.target.querySelectorAll('.stat-number');
-                statNumbers.forEach(stat => {
-                    const target = parseInt(stat.getAttribute('data-target'));
-                    animateCounter(stat, target);
-                });
-            }
         }
     });
 }, observerOptions);
 
-// Observe elements for animation
+// Observe elements for subtle fade-in
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.service-card, .project-card, .testimonial-card, .about-text, .contact-info, .hero-stats'
+        '.service-item, .work-item, .process-step, .selected-project'
     );
     
     animateElements.forEach(el => {
         el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
+        el.style.transform = 'translateY(20px)';
         el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
         observer.observe(el);
     });
@@ -117,11 +90,11 @@ if (contactForm) {
         // Here you would typically send the data to a server
         console.log('Form submitted:', data);
         
-        // Show success message (in a real app, you'd handle this properly)
+        // Show success message
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
-        submitButton.textContent = 'Message Sent!';
-        submitButton.style.background = '#10b981';
+        submitButton.textContent = 'Request Sent';
+        submitButton.style.opacity = '0.7';
         
         // Reset form
         contactForm.reset();
@@ -129,85 +102,14 @@ if (contactForm) {
         // Reset button after 3 seconds
         setTimeout(() => {
             submitButton.textContent = originalText;
-            submitButton.style.background = '';
+            submitButton.style.opacity = '1';
         }, 3000);
     });
 }
 
-// Parallax effect for hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const hero = document.querySelector('.hero-background');
-    if (hero) {
-        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
-// Add active class to nav link based on scroll position
-const sections = document.querySelectorAll('section[id]');
-const navLinksArray = Array.from(navLinks);
-
-const updateActiveNavLink = () => {
-    const scrollY = window.pageYOffset;
-    
-    sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            navLinksArray.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
-            });
-        }
-    });
-};
-
-window.addEventListener('scroll', updateActiveNavLink);
-
-// Add subtle animations to cards on hover
-document.querySelectorAll('.service-card, .project-card, .testimonial-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debounce to scroll handlers
-const debouncedScroll = debounce(() => {
-    updateActiveNavLink();
-}, 10);
-
-window.addEventListener('scroll', debouncedScroll);
-
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
 // Gallery Modal Functionality
 const galleryModal = document.getElementById('gallery-modal');
 const galleryImage = document.getElementById('gallery-image');
-const galleryTitle = document.getElementById('gallery-title');
 const galleryCounter = document.getElementById('gallery-counter');
 const galleryThumbnails = document.getElementById('gallery-thumbnails');
 const galleryClose = document.querySelector('.gallery-close');
@@ -217,21 +119,47 @@ const galleryOverlay = document.querySelector('.gallery-modal-overlay');
 
 // Project image galleries
 const projectGalleries = {
-    project1: {
-        title: 'Residential Project 1',
+    1: {
+        title: 'Residential Renovation',
         images: [
             '/projects/IMG_4878.jpeg',
             '/projects/IMG_4879.jpeg',
             '/projects/IMG_4880.jpeg'
         ]
     },
-    project2: {
-        title: 'Residential Project 2',
+    2: {
+        title: 'Kitchen & Bath Improvements',
+        images: [
+            '/projects/IMG_4879.jpeg',
+            '/projects/IMG_4878.jpeg'
+        ]
+    },
+    3: {
+        title: 'Exterior Improvements & Repairs',
+        images: [
+            '/projects/IMG_4880.jpeg',
+            '/projects/IMG_4878.jpeg'
+        ]
+    },
+    4: {
+        title: 'Custom Carpentry & Finish Work',
+        images: [
+            '/projects/4703747222349663462.JPG',
+            '/projects/IMG_4878.jpeg'
+        ]
+    },
+    5: {
+        title: 'Multi-Unit Residential Property',
         images: [
             '/projects/155480591355505790.JPG',
-            '/projects/4098440594837260042.JPG',
-            '/projects/4703747222349663462.JPG',
-            '/projects/5560434333821835102.JPG'
+            '/projects/4098440594837260042.JPG'
+        ]
+    },
+    6: {
+        title: 'Outdoor Living Environment',
+        images: [
+            '/projects/5560434333821835102.JPG',
+            '/projects/4703747222349663462.JPG'
         ]
     }
 };
@@ -239,48 +167,62 @@ const projectGalleries = {
 let currentGallery = null;
 let currentImageIndex = 0;
 
-// Open gallery
-document.querySelectorAll('[data-gallery]').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        const galleryId = button.getAttribute('data-gallery');
-        openGallery(galleryId);
+// Open gallery from work items
+document.querySelectorAll('.work-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+        const projectId = item.getAttribute('data-project');
+        if (projectId && projectGalleries[projectId]) {
+            openGallery(projectId);
+        }
     });
 });
 
-function openGallery(galleryId) {
-    currentGallery = projectGalleries[galleryId];
+function openGallery(projectId) {
+    currentGallery = projectGalleries[projectId];
     currentImageIndex = 0;
-    galleryModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    updateGallery();
-    createThumbnails();
+    if (galleryModal) {
+        galleryModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        updateGallery();
+        createThumbnails();
+    }
 }
 
 function closeGallery() {
-    galleryModal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (galleryModal) {
+        galleryModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 }
 
 function updateGallery() {
-    if (!currentGallery) return;
+    if (!currentGallery || !galleryImage) return;
     
     galleryImage.src = currentGallery.images[currentImageIndex];
-    galleryTitle.textContent = currentGallery.title;
-    galleryCounter.textContent = `${currentImageIndex + 1} / ${currentGallery.images.length}`;
+    if (galleryCounter) {
+        galleryCounter.textContent = `${currentImageIndex + 1} / ${currentGallery.images.length}`;
+    }
     
     // Update thumbnail active state
-    const thumbnails = galleryThumbnails.querySelectorAll('.gallery-thumbnail');
-    thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentImageIndex);
-    });
+    const thumbnails = galleryThumbnails?.querySelectorAll('.gallery-thumbnail');
+    if (thumbnails) {
+        thumbnails.forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentImageIndex);
+        });
+    }
     
     // Update navigation buttons
-    galleryPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
-    galleryNext.style.opacity = currentImageIndex === currentGallery.images.length - 1 ? '0.5' : '1';
+    if (galleryPrev) {
+        galleryPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
+    }
+    if (galleryNext) {
+        galleryNext.style.opacity = currentImageIndex === currentGallery.images.length - 1 ? '0.5' : '1';
+    }
 }
 
 function createThumbnails() {
+    if (!galleryThumbnails || !currentGallery) return;
+    
     galleryThumbnails.innerHTML = '';
     currentGallery.images.forEach((image, index) => {
         const thumbnail = document.createElement('div');
@@ -309,21 +251,24 @@ function prevImage() {
 }
 
 // Gallery event listeners
-galleryClose.addEventListener('click', closeGallery);
-galleryOverlay.addEventListener('click', closeGallery);
-galleryNext.addEventListener('click', nextImage);
-galleryPrev.addEventListener('click', prevImage);
+if (galleryClose) {
+    galleryClose.addEventListener('click', closeGallery);
+}
+if (galleryOverlay) {
+    galleryOverlay.addEventListener('click', closeGallery);
+}
+if (galleryNext) {
+    galleryNext.addEventListener('click', nextImage);
+}
+if (galleryPrev) {
+    galleryPrev.addEventListener('click', prevImage);
+}
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-    if (!galleryModal.classList.contains('active')) return;
+    if (!galleryModal || !galleryModal.classList.contains('active')) return;
     
     if (e.key === 'Escape') closeGallery();
     if (e.key === 'ArrowRight') nextImage();
     if (e.key === 'ArrowLeft') prevImage();
 });
-
-// Console message
-console.log('%cTrueLux Landing Page', 'font-size: 24px; font-weight: bold; color: #f8da69;');
-console.log('%cBuilt with modern web technologies for 2026', 'font-size: 14px; color: #64748b;');
-

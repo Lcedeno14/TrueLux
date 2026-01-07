@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TrueLux - Premium residential contracting services. Transform your home with expert craftsmanship.">
-    <title>TrueLux | Premium Residential Contracting</title>
+    <meta name="description" content="True Lux Construction - Luxury construction and renovation services. Licensed California general contractor serving Los Angeles.">
+    <title>True Lux Construction | Luxury Construction & Renovation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
@@ -16,14 +16,15 @@
         <div class="container nav-container">
             <div class="logo">
                 <a href="#home" class="logo-link">
-                    <img src="/logo.png" alt="TrueLux Construction" class="logo-img">
+                    <img src="/logo.png" alt="True Lux Construction" class="logo-img">
                 </a>
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#process" class="nav-link">Process</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
@@ -34,173 +35,312 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-background">
-            <div class="gradient-overlay"></div>
-            <div class="animated-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="container">
+            <!-- Primary Introduction -->
+            <div class="home-intro">
+                <h1 class="home-primary-statement">Luxury construction and renovation services.</h1>
+                <p class="home-supporting-line">Thoughtfully executed. Professionally managed.</p>
+                <p class="home-location-line">Serving Los Angeles and surrounding areas.</p>
             </div>
-        </div>
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    <span class="title-line">Transform Your</span>
-                    <span class="title-line highlight">Living Space</span>
-                    <span class="title-line">Into Excellence</span>
-                </h1>
-                <p class="hero-subtitle">Premium residential contracting services with unmatched craftsmanship and attention to detail.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Get Free Quote</a>
-                    <a href="#projects" class="btn btn-secondary">View Our Work</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="2">0</div>
-                        <div class="stat-label">Projects Completed</div>
+
+            <!-- Company Overview -->
+            <div class="home-overview">
+                <p>True Lux Construction is a licensed California general contractor delivering high-quality construction and renovation services with a focus on disciplined execution, clear communication, and long-term value.</p>
+            </div>
+
+            <!-- Scope Overview -->
+            <div class="home-scope">
+                <p>Our work spans residential construction, custom carpentry, outdoor living environments, and select commercial projects.</p>
+            </div>
+
+            <!-- Visual Proof -->
+            <div class="home-visual-proof">
+                <div class="visual-grid">
+                    <div class="visual-item">
+                        <img src="/projects/IMG_4878.jpeg" alt="Finished space" loading="lazy">
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="1">0</div>
-                        <div class="stat-label">Year Experience</div>
+                    <div class="visual-item">
+                        <img src="/projects/155480591355505790.JPG" alt="Finished space" loading="lazy">
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" data-target="100">0</div>
-                        <div class="stat-label">% Client Satisfaction</div>
+                    <div class="visual-item">
+                        <img src="/projects/IMG_4880.jpeg" alt="Finished space" loading="lazy">
                     </div>
                 </div>
             </div>
+
+            <!-- Selected Work -->
+            <div class="home-selected-work">
+                <h2 class="section-title">Selected Work</h2>
+                <div class="selected-projects">
+                    <div class="selected-project">
+                        <img src="/projects/IMG_4879.jpeg" alt="Residential renovation project" loading="lazy">
+                        <p class="project-caption">Residential renovation project — Los Angeles</p>
+                    </div>
+                    <div class="selected-project">
+                        <img src="/projects/4098440594837260042.JPG" alt="Residential renovation project" loading="lazy">
+                        <p class="project-caption">Residential renovation project — Los Angeles</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Process Snapshot -->
+            <div class="home-process-snapshot">
+                <h2 class="section-title">Process</h2>
+                <div class="process-steps-minimal">
+                    <div class="process-step-title">Consultation</div>
+                    <div class="process-step-title">Planning & Proposal</div>
+                    <div class="process-step-title">Execution</div>
+                    <div class="process-step-title">Completion</div>
+                </div>
+                <p class="process-supporting">A streamlined process focused on clarity, coordination, and quality.</p>
+            </div>
+
+            <!-- Final Invitation -->
+            <div class="home-invitation">
+                <a href="#contact" class="btn-consultation">Request a consultation</a>
+            </div>
         </div>
-        <div class="scroll-indicator">
-            <div class="mouse">
-                <div class="wheel"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">About</h2>
+            <div class="about-content">
+                <p>True Lux Construction was built on a simple standard: projects should be executed with clarity, discipline, and care from start to finish.</p>
+                <p>We approach each project with careful planning, professional oversight, and attention to detail — prioritizing coordination, accountability, and clean execution at every stage. The goal is always the same: a well-managed process and a finished result that holds up over time.</p>
+                <p>Our work includes residential construction and renovation, custom carpentry, outdoor living environments, and select commercial projects. We regularly work alongside homeowners, real estate agents, and property management teams on projects that require discretion, organization, and dependable follow-through.</p>
+                <p>True Lux Construction is a licensed and insured California general contractor serving Los Angeles and the surrounding areas. The company is led by licensed construction professionals with experience managing complex scopes and coordinating multi-trade projects.</p>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="services-section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Our Services</span>
-                <h2 class="section-title">What We Offer</h2>
-                <p class="section-subtitle">Comprehensive residential contracting solutions tailored to your vision</p>
+            <div class="services-header">
+                <h2 class="section-title">Services</h2>
+                <p class="section-subtitle">Comprehensive construction and renovation services for residential and select commercial projects.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Home Renovations</h3>
-                    <p class="service-description">Complete home transformations with modern design and premium materials.</p>
-                    <ul class="service-features">
-                        <li>Kitchen Remodeling</li>
-                        <li>Bathroom Renovations</li>
-                        <li>Living Space Design</li>
-                    </ul>
+
+            <!-- Service 1 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="/projects/IMG_4878.jpeg" alt="Residential Construction & Renovation" loading="lazy">
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="9" y1="3" x2="9" y2="21"></line>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Custom Construction</h3>
-                    <p class="service-description">Build your dream home from the ground up with expert craftsmanship.</p>
-                    <ul class="service-features">
-                        <li>New Home Building</li>
-                        <li>Additions & Extensions</li>
-                        <li>Architectural Design</li>
-                    </ul>
+                <div class="service-content">
+                    <h3 class="service-title">Residential Construction & Renovation</h3>
+                    <p>High-quality renovations and improvements for private residences, including interior transformations and structural upgrades. Projects are executed with disciplined planning, clear communication, and attention to detail.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                        </svg>
-                    </div>
-                    <h3 class="service-title">Luxury Upgrades</h3>
-                    <p class="service-description">Premium finishes and high-end materials for discerning homeowners.</p>
-                    <ul class="service-features">
-                        <li>High-End Finishes</li>
-                        <li>Smart Home Integration</li>
-                        <li>Energy Efficiency</li>
-                    </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="/projects/4703747222349663462.JPG" alt="Custom Carpentry & Structural Work" loading="lazy">
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
+                <div class="service-content">
+                    <h3 class="service-title">Custom Carpentry & Structural Work</h3>
+                    <p>Precision carpentry services including framing, structural repairs, stair systems, and interior and exterior wood elements integrated seamlessly into each project.</p>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="/projects/5560434333821835102.JPG" alt="Outdoor Living & Specialty Structures" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Outdoor Living & Specialty Structures</h3>
+                    <p>Design-forward outdoor environments including decks, patios, pergolas, outdoor kitchens, and specialty structures that extend usable living space with durability and refined detail.</p>
+                </div>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-item">
+                <div class="service-image">
+                    <img src="/projects/4098440594837260042.JPG" alt="Commercial & Multi-Unit Projects" loading="lazy">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">Commercial & Multi-Unit Projects</h3>
+                    <p>Construction and renovation services for commercial properties and multi-unit buildings, including coordinated improvements and renovation scopes executed with professional oversight.</p>
+                </div>
+            </div>
+
+            <div class="services-cta">
+                <a href="#contact" class="btn-consultation">Request a Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="work-section">
+        <div class="container">
+            <div class="work-header">
+                <h2 class="section-title">Selected Projects</h2>
+                <p class="section-subtitle">A curated selection of completed projects representing our approach to quality, coordination, and execution.</p>
+            </div>
+
+            <div class="work-grid">
+                <div class="work-item" data-project="1">
+                    <div class="work-image-wrapper">
+                        <img src="/projects/IMG_4878.jpeg" alt="Residential Renovation" class="work-image" loading="lazy">
                     </div>
-                    <h3 class="service-title">Maintenance & Repair</h3>
-                    <p class="service-description">Reliable maintenance services to keep your home in perfect condition.</p>
-                    <ul class="service-features">
-                        <li>Regular Maintenance</li>
-                        <li>Emergency Repairs</li>
-                        <li>Quality Guarantee</li>
-                    </ul>
+                    <h3 class="work-title">Residential Renovation</h3>
+                    <p class="work-caption">Residential interior renovation — Los Angeles</p>
+                </div>
+
+                <div class="work-item" data-project="2">
+                    <div class="work-image-wrapper">
+                        <img src="/projects/IMG_4879.jpeg" alt="Kitchen & Bath Improvements" class="work-image" loading="lazy">
+                    </div>
+                    <h3 class="work-title">Kitchen & Bath Improvements</h3>
+                    <p class="work-caption">Interior upgrades for a private residence — Los Angeles</p>
+                </div>
+
+                <div class="work-item" data-project="3">
+                    <div class="work-image-wrapper">
+                        <img src="/projects/IMG_4880.jpeg" alt="Exterior Improvements & Repairs" class="work-image" loading="lazy">
+                    </div>
+                    <h3 class="work-title">Exterior Improvements & Repairs</h3>
+                    <p class="work-caption">Exterior renovation and building improvements — Los Angeles</p>
+                </div>
+
+                <div class="work-item" data-project="4">
+                    <div class="work-image-wrapper">
+                        <img src="/projects/4703747222349663462.JPG" alt="Custom Carpentry & Finish Work" class="work-image" loading="lazy">
+                    </div>
+                    <h3 class="work-title">Custom Carpentry & Finish Work</h3>
+                    <p class="work-caption">Interior carpentry and finish upgrades — Los Angeles</p>
+                </div>
+
+                <div class="work-item" data-project="5">
+                    <div class="work-image-wrapper">
+                        <img src="/projects/155480591355505790.JPG" alt="Multi-Unit Residential Property" class="work-image" loading="lazy">
+                    </div>
+                    <h3 class="work-title">Multi-Unit Residential Property</h3>
+                    <p class="work-caption">Common area and unit improvements — Los Angeles</p>
+                </div>
+
+                <div class="work-item" data-project="6">
+                    <div class="work-image-wrapper">
+                        <img src="/projects/5560434333821835102.JPG" alt="Outdoor Living Environment" class="work-image" loading="lazy">
+                    </div>
+                    <h3 class="work-title">Outdoor Living Environment</h3>
+                    <p class="work-caption">Outdoor living and specialty construction — Los Angeles</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <!-- Process Section -->
+    <section id="process" class="process-section">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Our Portfolio</span>
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Showcasing excellence in every detail</p>
-            </div>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-project="1">
-                    <div class="project-image-wrapper">
-                        <img src="/projects/IMG_4878.jpeg" alt="Project 1" class="project-main-image" loading="lazy">
-                        <div class="project-overlay">
-                            <h3 class="project-title">Residential Project 1</h3>
-                            <p class="project-category">Complete Renovation</p>
-                            <button class="project-link" data-gallery="project1">View Gallery →</button>
-                        </div>
-                        <div class="project-image-count">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                            <span>3 Photos</span>
-                        </div>
-                    </div>
+            <h2 class="section-title">Process</h2>
+            <p class="process-intro">A clear, structured approach designed to keep projects organized, transparent, and well-executed from start to finish.</p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <h3 class="process-step-title">Consultation</h3>
+                    <p>Every project begins with a focused discussion to understand scope, priorities, and expectations. This allows us to assess the project and determine the most effective path forward.</p>
                 </div>
-                
-                <!-- Project 2 -->
-                <div class="project-card" data-project="2">
-                    <div class="project-image-wrapper">
-                        <img src="/projects/155480591355505790.JPG" alt="Project 2" class="project-main-image" loading="lazy">
-                        <div class="project-overlay">
-                            <h3 class="project-title">Residential Project 2</h3>
-                            <p class="project-category">Design & Construction</p>
-                            <button class="project-link" data-gallery="project2">View Gallery →</button>
-                        </div>
-                        <div class="project-image-count">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                                <polyline points="21 15 16 10 5 21"></polyline>
-                            </svg>
-                            <span>4 Photos</span>
-                        </div>
-                    </div>
+
+                <div class="process-step">
+                    <h3 class="process-step-title">Planning & Proposal</h3>
+                    <p>We develop a clear, well-defined plan outlining scope, schedule, and budget considerations. Proposals are prepared with clarity to support informed decision-making and smooth execution.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3 class="process-step-title">Execution</h3>
+                    <p>Projects are managed with professional oversight, consistent communication, and attention to detail. We coordinate trades, maintain an organized job site, and keep work progressing efficiently.</p>
+                </div>
+
+                <div class="process-step">
+                    <h3 class="process-step-title">Completion</h3>
+                    <p>Upon completion, we conduct a final walkthrough to ensure all work meets expectations and project objectives are fully delivered.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <p class="contact-intro">If you have a project in mind and would like to discuss scope, timing, and next steps, we invite you to get in touch.</p>
+            <p class="contact-note">Consultations are scheduled by appointment.</p>
+
+            <form class="contact-form" id="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Project Location</label>
+                        <input type="text" id="location" name="location" placeholder="City only" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="project-type">Project Type</label>
+                        <select id="project-type" name="project-type">
+                            <option value="">Select project type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial / Multi-Unit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline">Project Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="near-term">Near-term</option>
+                            <option value="flexible">Flexible</option>
+                            <option value="future">Future planning</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Brief Project Description</label>
+                    <textarea id="description" name="description" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn-consultation">Request a Consultation</button>
+            </form>
+
+            <div class="contact-info">
+                <p>Phone: <a href="tel:310-962-8288">310-962-8288</a></p>
+                <p>Email: <a href="mailto:jordan@trueluxconstruction.com">jordan@trueluxconstruction.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="/logo.png" alt="True Lux Construction" class="footer-logo-img">
+                </div>
+                <p class="footer-text">True Lux Construction is a licensed and insured California general contractor.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Image Gallery Modal -->
     <div class="gallery-modal" id="gallery-modal">
@@ -226,256 +366,11 @@
                 <img src="" alt="Gallery image" class="gallery-image" id="gallery-image">
             </div>
             <div class="gallery-info">
-                <h3 class="gallery-title" id="gallery-title"></h3>
                 <p class="gallery-counter" id="gallery-counter"></p>
             </div>
             <div class="gallery-thumbnails" id="gallery-thumbnails"></div>
         </div>
     </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <span class="section-tag">About Us</span>
-                    <h2 class="section-title">Crafting Excellence with Passion</h2>
-                    <p class="about-description">
-                        TrueLux is dedicated to transforming residential spaces with unmatched craftsmanship and attention to detail. 
-                        With a fresh perspective and commitment to excellence, we bring passion and precision to every project.
-                    </p>
-                    <p class="about-description">
-                        We combine traditional craftsmanship with modern techniques, ensuring your home reflects your unique 
-                        style while meeting the highest standards of quality and durability. Every project is a testament to our dedication.
-                    </p>
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div class="feature-content">
-                                <h4>Licensed & Insured</h4>
-                                <p>Fully certified professionals</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div class="feature-content">
-                                <h4>Quality Guaranteed</h4>
-                                <p>Premium materials & workmanship</p>
-                            </div>
-                        </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">✓</div>
-                            <div class="feature-content">
-                                <h4>Timely Completion</h4>
-                                <p>On schedule, every time</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual">
-                    <div class="about-card">
-                        <div class="card-glow"></div>
-                        <div class="card-content">
-                            <div class="experience-badge">
-                                <span class="badge-number">1</span>
-                                <span class="badge-label">Year</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Client Stories</span>
-                <h2 class="section-title">What Our Clients Say</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">"</div>
-                        <p class="testimonial-text">
-                            TrueLux transformed our outdated kitchen into a modern masterpiece. Their attention to detail 
-                            and professionalism exceeded our expectations.
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <div class="author-name">Sarah Johnson</div>
-                            <div class="author-title">Homeowner</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">"</div>
-                        <p class="testimonial-text">
-                            From design to completion, the team was exceptional. Our new bathroom is stunning and the 
-                            quality of work is outstanding.
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <div class="author-name">Michael Chen</div>
-                            <div class="author-title">Property Owner</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <div class="quote-icon">"</div>
-                        <p class="testimonial-text">
-                            Professional, reliable, and truly craftsmen. They built our dream home addition and made the 
-                            entire process smooth and stress-free.
-                        </p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar"></div>
-                        <div class="author-info">
-                            <div class="author-name">Emily Rodriguez</div>
-                            <div class="author-title">Homeowner</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <span class="section-tag">Get In Touch</span>
-                    <h2 class="section-title">Start Your Project Today</h2>
-                    <p class="contact-description">
-                        Ready to transform your home? Contact us for a free consultation and quote. 
-                        Let's bring your vision to life.
-                    </p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>(555) 123-4567</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@truelux.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                    <circle cx="12" cy="10" r="3"></circle>
-                                </svg>
-                            </div>
-                            <div>
-                                <h4>Location</h4>
-                                <p>123 Construction Ave, City, ST 12345</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Your Phone">
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">
-                        <img src="/logo.png" alt="TrueLux Construction" class="footer-logo-img">
-                    </div>
-                    <p class="footer-description">Transforming homes with exceptional craftsmanship and dedication to excellence.</p>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Home Renovations</a></li>
-                        <li><a href="#">Custom Construction</a></li>
-                        <li><a href="#">Luxury Upgrades</a></li>
-                        <li><a href="#">Maintenance & Repair</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4 class="footer-title">Connect</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect x="2" y="9" width="4" height="12"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 TrueLux. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
     <script type="module" src="/main.js"></script>
 </body>
