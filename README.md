@@ -108,6 +108,36 @@ Replace placeholder project images by modifying the `.project-image` elements in
 - Safari (latest)
 - Edge (latest)
 
+## Deployment
+
+### Vercel Deployment
+
+This project is configured for easy deployment on Vercel:
+
+1. **Connect to GitHub**: Go to [vercel.com](https://vercel.com) and sign in with your GitHub account
+2. **Import Project**: Click "Add New Project" and select the `TrueLux` repository
+3. **Configure**: Vercel will automatically detect the Vite framework and use the `vercel.json` configuration
+4. **Deploy**: Click "Deploy" and your site will be live!
+
+The `vercel.json` file is already configured with:
+- Build command: `npm run build`
+- Output directory: `dist`
+- Framework: `vite`
+- Proper routing for SPA
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+```bash
+npm run build
+vercel --prod
+```
+
+## Repository
+
+GitHub: https://github.com/Lcedeno14/TrueLux
+
 ## License
 
 This project is open source and available for commercial use.
