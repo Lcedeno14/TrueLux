@@ -1,4 +1,4 @@
-// True Lux Construction - Navigation and Form Handling
+// Modern 2026 Landing Page JavaScript
 
 // Navigation
 const navbar = document.getElementById('navbar');
@@ -7,6 +7,7 @@ const navMenu = document.getElementById('nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
 // Navbar scroll effect
+let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
     
@@ -15,23 +16,21 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
+    
+    lastScroll = currentScroll;
 });
 
 // Mobile menu toggle
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-}
+navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+    navToggle.classList.toggle('active');
+});
 
 // Close mobile menu when clicking nav links
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        if (navToggle) {
-            navToggle.classList.remove('active');
-        }
+        navToggle.classList.remove('active');
     });
 });
 
@@ -48,6 +47,101 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
+});
+
+// Animated counter for stats
+const animateCounter = (element, target, duration = 2000) => {
+    const start = 0;
+    const increment = target / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target + (target === 98 ? '%' : '+');
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
+        }
+    }, 16);
+};
+
+// Intersection Observer for animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            
+            // Animate stats if it's the stats section
+            if (entry.target.classList.contains('hero-stats')) {
+                const statNumbers = entry.target.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    animateCounter(stat, target);
+                });
+            }
+        }
+    });
+}, observerOptions);
+
+// Observe elements for animation
+document.addEventListener('DOMContentLoaded', () => {
+    const animateElements = document.querySelectorAll(
+        '.service-card, .project-card, .testimonial-card, .about-text, .contact-info, .hero-stats'
+    );
+    
+    animateElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(el);
+    });
+});
+
+// Form handling
+const contactForm = document.getElementById('contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Here you would typically send the data to a server
+        console.log('Form submitted:', data);
+        
+        // Show success message (in a real app, you'd handle this properly)
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = 'Message Sent!';
+        submitButton.style.background = '#10b981';
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            submitButton.textContent = originalText;
+            submitButton.style.background = '';
+        }, 3000);
+    });
+}
+
+// Parallax effect for home section (if needed)
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const homeVisual = document.querySelector('.home-visual');
+    if (homeVisual) {
+        // Subtle parallax effect
+        homeVisual.style.transform = `translateY(${scrolled * 0.1}px)`;
+    }
 });
 
 // Add active class to nav link based on scroll position
@@ -73,7 +167,20 @@ const updateActiveNavLink = () => {
     });
 };
 
-// Debounce scroll events
+window.addEventListener('scroll', updateActiveNavLink);
+
+// Add subtle animations to cards on hover
+document.querySelectorAll('.service-card, .project-card, .testimonial-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-8px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Performance optimization: Debounce scroll events
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -86,69 +193,138 @@ function debounce(func, wait) {
     };
 }
 
+// Apply debounce to scroll handlers
 const debouncedScroll = debounce(() => {
     updateActiveNavLink();
 }, 10);
 
 window.addEventListener('scroll', debouncedScroll);
 
-// Form handling
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+// Add loading animation
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Gallery Modal Functionality
+const galleryModal = document.getElementById('gallery-modal');
+const galleryImage = document.getElementById('gallery-image');
+const galleryThumbnails = document.getElementById('gallery-thumbnails');
+const galleryClose = document.querySelector('.gallery-close');
+const galleryPrev = document.querySelector('.gallery-prev');
+const galleryNext = document.querySelector('.gallery-next');
+const galleryOverlay = document.querySelector('.gallery-modal-overlay');
+
+// Project image galleries
+const projectGalleries = {
+    project1: {
+        title: 'Residential Renovation',
+        images: [
+            '/projects/IMG_4878.jpeg',
+            '/projects/IMG_4879.jpeg',
+            '/projects/IMG_4880.jpeg'
+        ]
+    },
+    project2: {
+        title: 'Exterior Improvements & Repairs',
+        images: [
+            '/projects/155480591355505790.JPG',
+            '/projects/4098440594837260042.JPG',
+            '/projects/4703747222349663462.JPG',
+            '/projects/5560434333821835102.JPG'
+        ]
+    }
+};
+
+let currentGallery = null;
+let currentImageIndex = 0;
+
+// Open gallery
+document.querySelectorAll('[data-gallery]').forEach(item => {
+    item.addEventListener('click', (e) => {
         e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        const submitButton = contactForm.querySelector('button[type="submit"]');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Request Sent';
-        submitButton.style.opacity = '0.7';
-        submitButton.disabled = true;
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Reset button after 3 seconds
-        setTimeout(() => {
-            submitButton.textContent = originalText;
-            submitButton.style.opacity = '1';
-            submitButton.disabled = false;
-        }, 3000);
+        const galleryId = item.getAttribute('data-gallery');
+        openGallery(galleryId);
+    });
+});
+
+function openGallery(galleryId) {
+    currentGallery = projectGalleries[galleryId];
+    currentImageIndex = 0;
+    galleryModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    updateGallery();
+    createThumbnails();
+}
+
+function closeGallery() {
+    galleryModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function updateGallery() {
+    if (!currentGallery) return;
+    
+    galleryImage.src = currentGallery.images[currentImageIndex];
+    const galleryIntro = document.getElementById('gallery-intro');
+    if (galleryIntro) {
+        galleryIntro.textContent = 'This project involved a coordinated renovation scope executed with a focus on quality, schedule, and long-term performance.';
+    }
+    
+    // Update thumbnail active state
+    const thumbnails = galleryThumbnails.querySelectorAll('.gallery-thumbnail');
+    thumbnails.forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === currentImageIndex);
+    });
+    
+    // Update navigation buttons
+    galleryPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
+    galleryNext.style.opacity = currentImageIndex === currentGallery.images.length - 1 ? '0.5' : '1';
+}
+
+function createThumbnails() {
+    galleryThumbnails.innerHTML = '';
+    currentGallery.images.forEach((image, index) => {
+        const thumbnail = document.createElement('div');
+        thumbnail.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
+        thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy">`;
+        thumbnail.addEventListener('click', () => {
+            currentImageIndex = index;
+            updateGallery();
+        });
+        galleryThumbnails.appendChild(thumbnail);
     });
 }
 
-// Simple fade-in on scroll for sections
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+function nextImage() {
+    if (currentGallery && currentImageIndex < currentGallery.images.length - 1) {
+        currentImageIndex++;
+        updateGallery();
+    }
+}
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
+function prevImage() {
+    if (currentGallery && currentImageIndex > 0) {
+        currentImageIndex--;
+        updateGallery();
+    }
+}
 
-// Observe sections for subtle animation
-document.addEventListener('DOMContentLoaded', () => {
-    const animateElements = document.querySelectorAll(
-        '.service-section, .work-item, .process-item, .about-text'
-    );
+// Gallery event listeners
+galleryClose.addEventListener('click', closeGallery);
+galleryOverlay.addEventListener('click', closeGallery);
+galleryNext.addEventListener('click', nextImage);
+galleryPrev.addEventListener('click', prevImage);
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (!galleryModal.classList.contains('active')) return;
     
-    animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        observer.observe(el);
-    });
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
 });
+
+// Console message
+console.log('%cTrueLux Landing Page', 'font-size: 24px; font-weight: bold; color: #f8da69;');
+console.log('%cBuilt with modern web technologies for 2026', 'font-size: 14px; color: #64748b;');
+
