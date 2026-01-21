@@ -138,7 +138,7 @@ if (contactForm) {
                 submitButton.textContent = 'Message Sent!';
                 submitButton.style.background = '#10b981';
                 contactForm.reset();
-                
+
                 // Show success message
                 setTimeout(() => {
                     submitButton.textContent = originalText;
@@ -146,14 +146,20 @@ if (contactForm) {
                     submitButton.disabled = false;
                 }, 3000);
             } else {
-                // Error
-                throw new Error(result.error || 'Failed to send message');
+                // Error - log full details
+                console.error('API Error Response:', result);
+                const errorMsg = result.details || result.error || 'Failed to send message';
+                throw new Error(errorMsg);
             }
         } catch (error) {
             console.error('Error:', error);
+            console.error('Full error details:', error.message);
             submitButton.textContent = 'Error - Try Again';
             submitButton.style.background = '#ef4444';
-            
+
+            // Show error to user temporarily
+            alert('Error submitting form. Check console for details or contact support.');
+
             setTimeout(() => {
                 submitButton.textContent = originalText;
                 submitButton.style.background = '';

@@ -16,10 +16,10 @@ export default async function handler(req, res) {
   }
 
   // Get form data
-  const { name, email, phone, location, 'project-type': projectType, timeline, description } = req.body;
+  const { name, email, phone, message } = req.body;
 
   // Validate required fields
-  if (!name || !email || !phone || !location || !description) {
+  if (!name || !email || !phone || !message) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
@@ -54,18 +54,16 @@ export default async function handler(req, res) {
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>Project Location:</strong> ${location}</p>
-            <p><strong>Project Type:</strong> ${projectType || 'Not specified'}</p>
-            <p><strong>Timeline:</strong> ${timeline || 'Not specified'}</p>
-            <p><strong>Description:</strong></p>
-            <p>${description.replace(/\n/g, '<br>')}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message.replace(/\n/g, '<br>')}</p>
           `,
         }),
       });
 
       if (!response.ok) {
         const error = await response.json();
-        throw new Error(error.message || 'Failed to send email');
+        console.error('Resend API error:', error);
+        throw new Error(JSON.stringify(error) || 'Failed to send email');
       }
 
       return res.status(200).json({ success: true, message: 'Email sent successfully' });
@@ -78,9 +76,10 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     console.error('Error sending email:', error);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Failed to send email. Please try again later.',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      details: error.message,
+      debugInfo: error.toString()
     });
   }
 }

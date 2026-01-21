@@ -62,7 +62,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 1.5rem 0;
+    padding: 0.5rem 0;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -79,8 +79,10 @@ body {
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 2rem;
 }
 
 .logo-link {
@@ -91,7 +93,7 @@ body {
 }
 
 .logo-img {
-    height: 50px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     transition: var(--transition);
@@ -102,11 +104,11 @@ body {
 }
 
 .logo-text {
-    font-size: 1.25rem;
+    font-size: 2.5rem;
     font-weight: 600;
     color: var(--text-primary);
-    font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.02em;
     transition: var(--transition);
 }
 
@@ -115,7 +117,7 @@ body {
 }
 
 .footer-logo-img {
-    height: 60px;
+    height: 180px;
     width: auto;
     object-fit: contain;
     margin-bottom: 1rem;
@@ -127,6 +129,9 @@ body {
     list-style: none;
     gap: 2.5rem;
     align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .nav-link {
@@ -524,7 +529,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding-top: 80px;
+    padding-top: 220px;
 }
 
 .hero-background {
@@ -1808,7 +1813,7 @@ body {
     }
 
     .logo-img {
-        height: 40px;
+        height: 60px;
     }
 
     .logo-text {
@@ -1816,7 +1821,7 @@ body {
     }
 
     .footer-logo-img {
-        height: 50px;
+        height: 140px;
     }
 
     .hero-title {
