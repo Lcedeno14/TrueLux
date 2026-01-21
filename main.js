@@ -34,6 +34,16 @@ navLinks.forEach(link => {
     });
 });
 
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+    const isClickInsideNav = navMenu.contains(e.target) || navToggle.contains(e.target);
+
+    if (!isClickInsideNav && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('active');
+    }
+});
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -255,7 +265,7 @@ const projectGalleries = {
         title: 'Residential Renovation',
         images: [
             '/projects/IMG_4879.jpeg',
-            '/projects/IMG_4880.jpeg'
+            '/projects/bathroom.jpeg'
         ]
     },
     project2: {
@@ -278,93 +288,81 @@ const projectGalleries = {
     }
 };
 
-let currentGallery = null;
-let currentImageIndex = 0;
+// Initialize inline galleries for each work item
+document.querySelectorAll('[data-gallery]').forEach(workItem => {
+    const galleryId = workItem.getAttribute('data-gallery');
+    const gallery = projectGalleries[galleryId];
 
-// Open gallery
-document.querySelectorAll('[data-gallery]').forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        const galleryId = item.getAttribute('data-gallery');
-        openGallery(galleryId);
-    });
-});
+    if (!gallery || gallery.images.length <= 1) return;
 
-function openGallery(galleryId) {
-    currentGallery = projectGalleries[galleryId];
-    currentImageIndex = 0;
-    galleryModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    updateGallery();
-    createThumbnails();
-}
+    const imageWrapper = workItem.querySelector('.work-image-wrapper');
+    const img = workItem.querySelector('.work-image');
+    let currentIndex = 0;
 
-function closeGallery() {
-    galleryModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
+    // Create navigation arrows
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'gallery-nav-btn prev';
+    prevBtn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+    prevBtn.setAttribute('aria-label', 'Previous image');
 
-function updateGallery() {
-    if (!currentGallery) return;
-    
-    galleryImage.src = currentGallery.images[currentImageIndex];
-    const galleryIntro = document.getElementById('gallery-intro');
-    if (galleryIntro) {
-        galleryIntro.textContent = 'This project involved a coordinated renovation scope executed with a focus on quality, schedule, and long-term performance.';
-    }
-    
-    // Update thumbnail active state
-    const thumbnails = galleryThumbnails.querySelectorAll('.gallery-thumbnail');
-    thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentImageIndex);
-    });
-    
-    // Update navigation buttons
-    galleryPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
-    galleryNext.style.opacity = currentImageIndex === currentGallery.images.length - 1 ? '0.5' : '1';
-}
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'gallery-nav-btn next';
+    nextBtn.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+    nextBtn.setAttribute('aria-label', 'Next image');
 
-function createThumbnails() {
-    galleryThumbnails.innerHTML = '';
-    currentGallery.images.forEach((image, index) => {
-        const thumbnail = document.createElement('div');
-        thumbnail.className = `gallery-thumbnail ${index === 0 ? 'active' : ''}`;
-        thumbnail.innerHTML = `<img src="${image}" alt="Thumbnail ${index + 1}" loading="lazy">`;
-        thumbnail.addEventListener('click', () => {
-            currentImageIndex = index;
-            updateGallery();
+    // Create indicators
+    const indicators = document.createElement('div');
+    indicators.className = 'gallery-indicators';
+
+    gallery.images.forEach((_, index) => {
+        const indicator = document.createElement('div');
+        indicator.className = `gallery-indicator ${index === 0 ? 'active' : ''}`;
+        indicator.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = index;
+            updateImage();
         });
-        galleryThumbnails.appendChild(thumbnail);
+        indicators.appendChild(indicator);
     });
-}
 
-function nextImage() {
-    if (currentGallery && currentImageIndex < currentGallery.images.length - 1) {
-        currentImageIndex++;
-        updateGallery();
+    // Update image function
+    function updateImage() {
+        img.style.opacity = '0';
+        setTimeout(() => {
+            img.src = gallery.images[currentIndex];
+            img.style.opacity = '1';
+
+            // Update indicators
+            indicators.querySelectorAll('.gallery-indicator').forEach((ind, idx) => {
+                ind.classList.toggle('active', idx === currentIndex);
+            });
+        }, 150);
     }
-}
 
-function prevImage() {
-    if (currentGallery && currentImageIndex > 0) {
-        currentImageIndex--;
-        updateGallery();
-    }
-}
+    // Navigation handlers
+    prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateImage();
+        }
+    });
 
-// Gallery event listeners
-galleryClose.addEventListener('click', closeGallery);
-galleryOverlay.addEventListener('click', closeGallery);
-galleryNext.addEventListener('click', nextImage);
-galleryPrev.addEventListener('click', prevImage);
+    nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (currentIndex < gallery.images.length - 1) {
+            currentIndex++;
+            updateImage();
+        }
+    });
 
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (!galleryModal.classList.contains('active')) return;
-    
-    if (e.key === 'Escape') closeGallery();
-    if (e.key === 'ArrowRight') nextImage();
-    if (e.key === 'ArrowLeft') prevImage();
+    // Append elements
+    imageWrapper.appendChild(prevBtn);
+    imageWrapper.appendChild(nextBtn);
+    imageWrapper.appendChild(indicators);
+
+    // Add transition to image
+    img.style.transition = 'opacity 0.15s ease-in-out';
 });
 
 // Console message
