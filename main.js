@@ -336,6 +336,10 @@ document.querySelectorAll('[data-gallery]').forEach(workItem => {
             indicators.querySelectorAll('.gallery-indicator').forEach((ind, idx) => {
                 ind.classList.toggle('active', idx === currentIndex);
             });
+
+            // Show/hide arrows based on position
+            prevBtn.style.display = currentIndex > 0 ? 'flex' : 'none';
+            nextBtn.style.display = currentIndex < gallery.images.length - 1 ? 'flex' : 'none';
         }, 150);
     }
 
@@ -363,6 +367,10 @@ document.querySelectorAll('[data-gallery]').forEach(workItem => {
 
     // Add transition to image
     img.style.transition = 'opacity 0.15s ease-in-out';
+
+    // Set initial arrow visibility (hide left arrow on first image)
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = gallery.images.length > 1 ? 'flex' : 'none';
 });
 
 // Console message
